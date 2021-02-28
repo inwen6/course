@@ -42,7 +42,7 @@
         <div>
       <div class="paging">
         <!-- undisable这个class是否存在，取决于数据属性hasPrevious -->
-        <a
+        <!-- <a
           :class="{undisable: !data.hasPrevious}"
           href="#"
           title="首页"
@@ -69,7 +69,7 @@
           href="#"
           title="末页"
           @click.prevent="gotoPage(data.pages)">末</a>
-        <div class="clear"/>
+        <div class="clear"/> -->
       </div>
     </div>
       </section>
@@ -97,7 +97,7 @@ export default {
       priceSort:"",
       queryParams:{
         page:1,
-        size:10
+        size:999
       }
     }
   },

@@ -50,13 +50,13 @@
                         <ul>
                           <!-- 文件目录 -->
                           <li class="lh-menu-stair" v-for="chapter in chapterVideoList" :key="chapter.courseId">
-                            <a href="javascript: void(0)" :title="chapter.chapterName" class="current-1">
+                            <!-- <a href="javascript: void(0)" :title="chapter.chapterName" class="current-1">
                               <em class="lh-menu-i-1 icon18 mr10"></em>{{chapter.chapterName}}
-                            </a>
+                            </a> -->
 
                             <ol class="lh-menu-ol" style="display: block;">
                               <li class="lh-menu-second ml30">
-                                <a :href="'/player/'+chapter.courseId" target="_blank">
+                                <a :href="'/player/'+chapter.chapterId" target="_blank">
                                   <span class="fr">
                                     <i class="free-icon vam mr10">免费观看</i>
                                   </span>
@@ -112,8 +112,7 @@
 
 <script>
 import courseApi from '@/api/course'
-import orderApi from '@/api/orders'
-  import cookie from 'js-cookie'
+import orderApi from '@/api/orders' 
 export default {
    asyncData({ params, error }) {
     return {courseId:params.id}
@@ -147,13 +146,9 @@ export default {
       initCourseInfo(){
         // 查询章节
          courseApi.getAllchapter({page:1,size:10,courseId:this.courseId})
-            .then(response =>{
-              console.log(response)
-              // this.courseWebVo = response.data.data.courseWebVo
-              this.chapterVideoList = response.data.data.list
-              // this.isBuy = response.data.data.isBuy 
-             //第一个参数cookie名称，第二个参数值，第三个参数作用范围
-             cookie.set('VideoList',response.data.data.list,{domain: 'localhost'})
+            .then(response =>{ 
+              this.chapterVideoList = response.data.data.list 
+              sessionStorage.setItem('VideoList',JSON.stringify(response.data.data.list))
             })
         // 查询课程详情
          courseApi.getcourse(this.courseId)

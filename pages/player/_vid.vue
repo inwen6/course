@@ -1,7 +1,7 @@
 <!--
  * @Author: inwen6
  * @Date: 2021-02-28 00:38:37
- * @LastEditTime: 2021-02-28 18:02:48
+ * @LastEditTime: 2021-02-28 18:24:17
  * @LastEditors: Please set LastEditors
  * @Description: 描述
  * @FilePath: /course/pages/player/_vid.vue
@@ -24,18 +24,22 @@
   import cookie from 'js-cookie'
 export default {
     layout: 'video',//应用video布局 
-   asyncData({ params, error }) {
-    let arr = cookie.get('VideoList')
-    console.log(arr)
-    // console.log(arr.files((item)=>item.courseId == params.vid))
+   asyncData({ params, error }) { //服务端执行
     return {vid:params.vid}
    },
-    mounted() { //页面渲染之后  created 
+    mounted() { //页面渲染之后  created  
+        let arr = JSON.parse(sessionStorage.getItem('VideoList'))
+        let url = ''
+        for(let i=0;i<arr.length;i++){
+            if(arr[i].chapterId == this.vid){ 
+                url = arr[i].chapterVideoUrl
+            }
+        }  
         new Aliplayer({
             "id": "J_prismPlayer",
-            "source": this.vid,
+            "source": url,
             "width": "100%",
-            "height": "500px",
+            "height": "90vh",
             "autoplay": true,
             "isLive": false,
             "rePlay": false,
