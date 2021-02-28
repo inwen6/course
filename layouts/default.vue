@@ -16,14 +16,20 @@
             <router-link to="/course" tag="li" active-class="current">
               <a>课程</a>
             </router-link>
-            <router-link to="/teacher" tag="li" active-class="current">
+           <!-- <router-link to="/teacher" tag="li" active-class="current">
               <a>名师</a>
             </router-link>
             <router-link to="/article" tag="li" active-class="current">
               <a>文章</a>
-            </router-link>
+            </router-link> -->
             <router-link to="/activity" tag="li" active-class="current">
               <a>活动</a>
+            </router-link>
+            <router-link to="/case" tag="li" active-class="current">
+              <a>就业案例</a>
+            </router-link>
+            <router-link to="/jobs" tag="li" active-class="current">
+              <a>招聘</a>
             </router-link>
             <router-link to="/qa" tag="li" active-class="current">
               <a>问答</a>

@@ -4,23 +4,23 @@
     <div class="wrapper activities">
       <div class="activity-card-list">
         <div class="top-title">
-          <h4 class="latest">最新活动</h4>
+          <h4 class="latest">就业案例</h4>
           <div class="clearfix"></div>
         </div>
         <div class="activity-list">
           <ul class="activity">
-            <li class="activity-item" v-for="item in actList " :key="item.actId">
+            <li class="activity-item" v-for="item in caseList " :key="item.actId">
               <div class="activity-inner">
                 <a href="http://"></a>
                 <div class="img">
-                  <a :href="'/activity/'+item.actId" target="_blank"><img src="../../assets/img/widget-activity01.png"
+                  <a :href="'/case/'+item.caseId" target="_blank"><img src="../../assets/img/widget-activity2.png"
                       alt="" /></a>
                 </div>
                 <div class="text">
-                  <p class="title">{{item.actDesc}}</p>
+                  <p class="title">{{item.caseTitle}}</p>
                   <div class="fl goin">
-                    <p>时间：{{item.createTime}}</p>
-                    <p>作者：{{item.authorName}}</p>
+                    <p>时间：{{item.createTime?item.createTime:'未知'}}</p>
+                    <p>作者：{{item.authorName?item.authorName:'瑞视云智'}}</p>
                   </div>
                   <div class="fr btn">
                     <span class="sui-btn btn-bao">查看详情</span>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-  import activityApi from '@/api/activity.js'
+  import caseApi from '@/api/case.js'
   export default {
     data() {
       return {
@@ -46,7 +46,7 @@
           page: 1,
           size: 999
         },
-        actList:[]
+        caseList:[]
       }
     },
     created() {
@@ -54,9 +54,9 @@
     },
     methods: {
       initActivity() {
-        activityApi.getActivityByPage(this.queryParams).then(res => {
-          this.actList=res.data.data.list
-          sessionStorage.setItem('actList',JSON.stringify(res.data.data.list))
+        caseApi.getCaseByPage(this.queryParams).then(res => {
+          this.caseList=res.data.data.list
+          sessionStorage.setItem('caseList',JSON.stringify(this.caseList))
         })
       }
     }
