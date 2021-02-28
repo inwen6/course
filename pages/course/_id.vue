@@ -12,64 +12,9 @@
       <div>
         <article class="c-v-pic-wrap" style="height: 357px;">
           <section class="p-h-video-box" id="videoPlay">
-            <img height="357px" :src="courseWebVo.cover" :alt="courseWebVo.title" class="dis c-v-pic">
+            <img height="357px" :src="course.courseImage" :alt="course.courseName" class="dis c-v-pic">
           </section>
-        </article>
-        <aside class="c-attr-wrap">
-          <section class="ml20 mr15">
-            <h2 class="hLh30 txtOf mt15">
-              <span class="c-fff fsize24">{{courseWebVo.title}}</span>
-            </h2>
-            <section class="c-attr-jg">
-              <span class="c-fff">价格：</span>
-              <b class="c-yellow" style="font-size:24px;">￥{{courseWebVo.price}}</b>
-            </section>
-            <section class="c-attr-mt c-attr-undis">
-              <span class="c-fff fsize14">主讲： {{courseWebVo.teacherName}}&nbsp;&nbsp;&nbsp;</span>
-            </section>
-            <section class="c-attr-mt of">
-              <span class="ml10 vam">
-                <em class="icon18 scIcon"></em>
-                <a class="c-fff vam" title="收藏" href="#" >收藏</a>
-              </span>
-            </section>
-            <section  v-if="isBuy || Number(courseWebVo.price) === 0" class="c-attr-mt">
-              <a href="#" title="立即观看" class="comm-btn c-btn-3">立即观看</a>
-            </section>
-            <section  v-else class="c-attr-mt">
-              <a @click="createOrders()" href="#" title="立即购买" class="comm-btn c-btn-3">立即购买</a>
-            </section>
-          </section>
-        </aside>
-        <aside class="thr-attr-box">
-          <!--   <ol class="thr-attr-ol clearfix"> -->
-          <ol class="thr-attr-ol ">
-            <li>
-              <p>&nbsp;</p>
-              <aside>
-                <span class="c-fff f-fM">购买数</span>
-                <br>
-                <h6 class="c-fff f-fM mt10">{{courseWebVo.buyCount}}</h6>
-              </aside>
-            </li>
-            <li>
-              <p>&nbsp;</p>
-              <aside>
-                <span class="c-fff f-fM">课时数</span>
-                <br>
-                <h6 class="c-fff f-fM mt10">20</h6>
-              </aside>
-            </li>
-            <li>
-              <p>&nbsp;</p>
-              <aside>
-                <span class="c-fff f-fM">浏览数</span>
-                <br>
-                <h6 class="c-fff f-fM mt10">501</h6>
-              </aside>
-            </li>
-          </ol>
-        </aside>
+        </article> 
         <div class="clear"></div>
       </div>
       <!-- /课程封面介绍 -->
@@ -89,7 +34,8 @@
                   </h6>
                   <div class="course-txt-body-wrap">
                     <section class="course-txt-body">
-                      <p v-html="courseWebVo.description">{{courseWebVo.description}}</p>
+                      <!-- <p v-html="courseWebVo.description">{{courseWebVo.description}}</p> -->
+                      <p>{{course.courseDesc}}</p>
                     </section>
                   </div>
                 </div>
@@ -104,8 +50,8 @@
                         <ul>
                           <!-- 文件目录 -->
                           <li class="lh-menu-stair" v-for="chapter in chapterVideoList" :key="chapter.id">
-                            <a href="javascript: void(0)" :title="chapter.title" class="current-1">
-                              <em class="lh-menu-i-1 icon18 mr10"></em>{{chapter.title}}
+                            <a href="javascript: void(0)" :title="chapter.chapterName" class="current-1">
+                              <em class="lh-menu-i-1 icon18 mr10"></em>{{chapter.chapterName}}
                             </a>
 
                             <ol class="lh-menu-ol" style="display: block;">
@@ -177,6 +123,7 @@ export default {
        courseWebVo: {},
        chapterVideoList: [],
        isBuy: false,
+       course:''
      }
    },
 
@@ -197,11 +144,19 @@ export default {
       },
 
       initCourseInfo(){
-         courseApi.getFrontCourseInfo(this.courseId)
+        // 查询章节
+         courseApi.getAllchapter({page:1,size:10,courseId:this.courseId})
             .then(response =>{
-              this.courseWebVo = response.data.data.courseWebVo
-              this.chapterVideoList = response.data.data.chapterVoList
-              this.isBuy = response.data.data.isBuy
+              console.log(response)
+              // this.courseWebVo = response.data.data.courseWebVo
+              this.chapterVideoList = response.data.data.list
+              // this.isBuy = response.data.data.isBuy
+            })
+        // 查询课程详情
+         courseApi.getcourse(this.courseId)
+            .then(response =>{
+              console.log(response)
+              this.course = response.data.data
             })
       }
   }

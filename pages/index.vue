@@ -33,18 +33,18 @@
                   <div class="cc-l-wrap">
                     <section class="course-img">
                       <img
-                        :src="course.cover"
+                        :src="course.courseImage"
                         class="img-responsive"
                         :alt="course.title"
                       >
                       <div class="cc-mask">
-                           <a :href="'/course/'+course.id" title="开始学习" class="comm-btn c-btn-1">开始学习</a>
+                           <a :href="'/course/'+course.courseId" title="开始学习" class="comm-btn c-btn-1">开始学习</a>
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                       <a :href="'/course/'+course.id" :title="course.title" class="course-title fsize18 c-333">{{course.title}}</a>
+                       <a :href="'/course/'+course.courseId" :title="course.courseName" class="course-title fsize18 c-333">{{course.courseName}}</a>
                     </h3>
-                    <section class="mt10 hLh20 of">
+                    <!-- <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green" v-if="Number(course.price) === 0">
                         <i class="c-fff fsize12 f-fA">免费</i>
                       </span>
@@ -53,7 +53,7 @@
                         |
                         <i class="c-999 f-fA">{{course.viewCount}}评论</i>
                       </span>
-                    </section>
+                    </section> -->
                   </div>
                 </li>
                
@@ -115,7 +115,7 @@
 
 <script>
 import banner from '@/api/banner'
-import index from '@/api/index'
+import {courseList} from '@/api/index'
 
 export default {
   data () {
@@ -146,33 +146,12 @@ export default {
       },],
       eduList:[{
         id:1,
-        cover:'https://www.gulixueyuan.com/files/default/2018/06-15/0918146150a9565117.jpg',
-        title:'这是标题',
+        courseImage:'https://www.gulixueyuan.com/files/default/2018/06-15/0918146150a9565117.jpg',
+        courseName:'这是标题',
         price:122,
         buyCount:20,
         viewCount:100
-      },{
-        id:1,
-        cover:'https://www.gulixueyuan.com/files/default/2018/06-15/0918146150a9565117.jpg',
-        title:'这是标题',
-        price:122,
-        buyCount:20,
-        viewCount:100
-      },{
-        id:1,
-        cover:'https://www.gulixueyuan.com/files/default/2018/06-15/0918146150a9565117.jpg',
-        title:'这是标题',
-        price:122,
-        buyCount:20,
-        viewCount:100
-      },{
-        id:1,
-        cover:'https://www.gulixueyuan.com/files/default/2018/06-15/0918146150a9565117.jpg',
-        title:'这是标题',
-        price:122,
-        buyCount:20,
-        viewCount:100
-      }],
+      } ],
       teacherList:[{
         id:1,
         name:'肖王巴',
@@ -197,22 +176,27 @@ export default {
         avatar:'https://www.gulixueyuan.com/files/default/2018/06-15/091541d6ddbd512267.jpg',
         career:'职业',
         intro:'这是介绍'
-      }]
+      }],
+      // 查询参数
+      queryParams: {
+        page: 1,
+        size: 4
+      },
     }
   },
   created() {
     //调用查询banner的方法
-    this.getBannerList()
+    // this.getBannerList()
     //调用查询热门课程和名师的方法
     this.getHotCourseTeacher()
   },
   methods:{
     //查询热门课程和名师
     getHotCourseTeacher() {
-      index.getIndexData()
-        .then(response => {
-          this.eduList = response.data.data.courseList
-          this.teacherList = response.data.data.teacherList
+      courseList(this.queryParams).then(response => {
+        console.log(response)
+          this.eduList = response.data.data.list
+          // this.teacherList = response.data.data.teacherList
         })
     },
     //查询banner数据

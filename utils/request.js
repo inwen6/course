@@ -25,7 +25,7 @@ service.interceptors.request.use(
     if( cookie.get('Authorization')){
       //把获取cookie值放到header里面
       
-      config.headers['token'] = cookie.get('Authorization')
+      config.headers['Authorization'] = cookie.get('Authorization')
     }
     return config
   },
