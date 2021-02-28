@@ -1,5 +1,5 @@
 <template>
-  
+
   <div>
     <!-- 幻灯片 开始 -->
   <div v-swiper:mySwiper="swiperOption">
@@ -16,7 +16,7 @@
       <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
   </div>
   <!-- 幻灯片 结束 -->
-    
+
      <div id="aCoursesList">
       <!-- 网校课程 开始 -->
       <div>
@@ -41,22 +41,22 @@
                            <a :href="'/course/'+course.courseId" title="开始学习" class="comm-btn c-btn-1">开始学习</a>
                       </div>
                     </section>
-                    <h3 class="hLh30 txtOf mt10">
+                    <h3 class="hLh30 txtOf mt10" >
                        <a :href="'/course/'+course.courseId" :title="course.courseName" class="course-title fsize18 c-333">{{course.courseName}}</a>
                     </h3>
-                    <!-- <section class="mt10 hLh20 of">
+                    <section class="mt10 hLh20 of" align="center">
                       <span class="fr jgTag bg-green" v-if="Number(course.price) === 0">
                         <i class="c-fff fsize12 f-fA">免费</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
-                        <i class="c-999 f-fA">{{course.buyCount}}人学习</i>
+                        <i class="c-999 f-fA">讲师:{{course.authorName}}</i>
                         |
-                        <i class="c-999 f-fA">{{course.viewCount}}评论</i>
+                        <i class="c-999 f-fA">课时数:{{course.courseHour}}</i>
                       </span>
-                    </section> -->
+                    </section>
                   </div>
                 </li>
-               
+
               </ul>
               <div class="clear"></div>
             </article>
@@ -98,7 +98,7 @@
                     </div>
                   </section>
                 </li>
-                
+
               </ul>
               <div class="clear"></div>
             </article>
