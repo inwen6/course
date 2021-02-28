@@ -13,7 +13,7 @@
               <div class="activity-inner">
                 <a href="http://"></a>
                 <div class="img">
-                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-acti.png" alt="" /></a>
+                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-activity01.png" alt="" /></a>
                 </div>
                 <div class="text">
                   <p class="title">APMCon2017中国应用性能管理大会</p>
@@ -32,7 +32,7 @@
               <div class="activity-inner">
                 <a href="http://"></a>
                 <div class="img">
-                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-acti.png" alt="" /></a>
+                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-activity01.png" alt="" /></a>
                 </div>
                 <div class="text">
                   <p class="title">APMCon2017中国应用性能管理大会</p>
@@ -51,7 +51,7 @@
               <div class="activity-inner">
                 <a href="http://"></a>
                 <div class="img">
-                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-acti.png" alt="" /></a>
+                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-activity01.png" alt="" /></a>
                 </div>
                 <div class="text">
                   <p class="title">APMCon2017中国应用性能管理大会</p>
@@ -70,7 +70,7 @@
               <div class="activity-inner">
                 <a href="http://"></a>
                 <div class="img">
-                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-acti.png" alt="" /></a>
+                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-activity01.png" alt="" /></a>
                 </div>
                 <div class="text">
                   <p class="title">APMCon2017中国应用性能管理大会</p>
@@ -365,7 +365,7 @@
     height: 33px !important;
     border: 1px solid #ccc !important;
   }
-  
+
   .footer {
     margin-top: 15px;
     border-top: 1px solid #e6e6e6;
