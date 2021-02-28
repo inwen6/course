@@ -21,7 +21,7 @@
             <div class="tit">
               <span>大会介绍</span>
             </div>
-            <div v-html="act.actContent" class="text">
+           <div v-html="case1.caseContent" class="text">
 
             </div>
           </div>
@@ -31,8 +31,8 @@
             <div class="tit">
               <span>活动组织者</span>
             </div>
-            <div class="text">
-              <p>主办方： {{act.authorName ? act.authorName :' 瑞视云智'}} </p>
+           <div class="text">
+              <p>主办方： {{case1.authorName ? case1.authorName :' 瑞视云智'}} </p>
             </div>
           </div>
           <div class="content-item">
@@ -62,20 +62,21 @@
   export default{
     data(){
       return{
-        act:{}
+        case1:{}
       }
     },
     asyncData({ params, error }) { //服务端执行
-     return {actId:params.vid}
+     return {caseId:params.id}
     },
     mounted() {
-     console.log(sessionStorage.getItem("actList"))
-      let arr = JSON.parse(sessionStorage.getItem("actList"));
+      let arr = JSON.parse(sessionStorage.getItem("caseList"));
       for (var i = 0; i < arr.length; i++) {
-          if(arr.actId==this.actId){
-            this.act=arr[i]
+          if(arr[i].caseId==this.caseId){
+            this.case1=arr[i]
+            console.log(this.case1)
           }
       }
+
     },
     methods:{
 
