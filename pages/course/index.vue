@@ -7,7 +7,7 @@
           <span class="c-333">全部课程</span>
         </h2>
       </header>
-      <section class="c-sort-box"> 
+      <section class="c-sort-box">
         <div class="mt40">
           <!-- /无数据提示 开始-->
           <section class="no-data-wrap" v-if="data.total==0">
@@ -25,12 +25,15 @@
                       <a :href="'/course/'+item.courseId" title="开始学习" class="comm-btn c-btn-1">开始学习</a>
                     </div>
                   </section>
-                  <h3 class="hLh30 txtOf mt10">
+                  <h3 class="hLh30 txtOf mt10" align="center">
                     <a :href="'/course/'+item.courseId" :title="item.courseName" class="course-title fsize18 c-333">{{item.courseName}}</a>
-                  </h3> 
+                  </h3>
+                  <p class="txt-title" align="center">
+                    课时数:{{item.courseHour}}   讲师:{{item.authorName}}
+                  </p>
                 </div>
               </li>
-              
+
             </ul>
             <div class="clear"></div>
           </article>
@@ -225,5 +228,8 @@ export default {
   }
   .show {
     display: block;
+  }
+  .txt-title{
+    color: #777777;
   }
 </style>
