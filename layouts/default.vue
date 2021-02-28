@@ -199,7 +199,7 @@ export default {
     //退出
     logout() {
       //清空cookie值
-      cookie.set('guli_token','',{domain: 'localhost'})
+      cookie.set('Authorization','',{domain: 'localhost'})
       cookie.set('guli_ucenter','',{domain: 'localhost'})
       //回到首页面
       window.location.href = "/";

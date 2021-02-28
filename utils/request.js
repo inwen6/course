@@ -1,9 +1,17 @@
+/*
+ * @Author: inwen6
+ * @Date: 2021-02-28 00:38:37
+ * @LastEditTime: 2021-02-28 14:44:35
+ * @LastEditors: Please set LastEditors
+ * @Description: 描述
+ * @FilePath: /course/utils/request.js
+ */
 import axios from 'axios'
 import cookie from 'js-cookie'
 import { ColorPicker } from 'element-ui'
 // 创建axios实例
 const service = axios.create({
-  baseURL: 'http://localhost:9001', // api的base_url
+  baseURL: 'http://47.113.82.4:8001', // api的base_url
   timeout: 20000 // 请求超时时间
 })
 
@@ -13,11 +21,11 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
 
-    //判断cookie里面是否有名称是'guli_token'的值
-    if( cookie.get('guli_token')){
+    //判断cookie里面是否有名称是'Authorization'的值
+    if( cookie.get('Authorization')){
       //把获取cookie值放到header里面
       
-      config.headers['token'] = cookie.get('guli_token')
+      config.headers['token'] = cookie.get('Authorization')
     }
     return config
   },
