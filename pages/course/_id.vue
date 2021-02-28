@@ -161,7 +161,7 @@ export default {
             .then(response =>{
               console.log(response)
               this.course = response.data.data
-             // 查询课程详情
+             // 查询讲师详情
               courseApi.getTeacher(this.course.courseAuthorId)
                 .then(response =>{
                   this.teacher=response.data.data
