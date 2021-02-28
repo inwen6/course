@@ -4,7 +4,7 @@
       <div class="fl left-list">
 
         <div class="job-position">
-          <div class="job-type reco-job">
+   <!--       <div class="job-type reco-job">
             <div class="head">
               <h4 class="title pull-left">推荐职位</h4>
               <span class="more pull-right"><a href="#">更多职位推荐&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></span>
@@ -12,93 +12,23 @@
             </div>
             <ul class="yui3-g job-list" style="display:block;">
               <li class="yui3-u-1-2 job-item">
-                <p><span class="name"><a href="./recruit-detail.html" target="_blank">Python开发工程师</a></span><span class="city"><i
+                <p><span class="name"><a :href="'/jobs/'+1" target="_blank">Python开发工程师</a></span><span class="city"><i
                       class="fa fa-map-marker"></i> 北京</span></p>
                 <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
                 <p><span class="company">百度 &middot; 6天前</span></p>
               </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
             </ul>
-          </div>
-          <div class="job-type latest-job">
+          </div> -->
+         <div class="job-type latest-job">
             <div class="head">
               <h4 class="title pull-left">最新职位</h4>
-              <span class="more pull-right"><a href="#">更多职位推荐&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></span>
+        <!--      <span class="more pull-right"><a href="#">更多职位推荐&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></span> -->
               <div class="clearfix"></div>
             </div>
             <ul class="yui3-g job-list" style="display:block;">
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name"> <a href="./recruit-jobDetail.html" target="_blank">Python开发工程师</a></span><span
+              <li class="yui3-u-1-2 job-item" v-for="item in jobsList" v-bind:key="item.jobsId">
+                <p><span class="name"> <a :href="'/jobs/'+item.jobsId" target="_blank">{{item.jobsTitle}}</a></span><span
                     class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
-                <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
-                <p><span class="company">百度 &middot; 6天前</span></p>
-              </li>
-              <li class="yui3-u-1-2 job-item">
-                <p><span class="name">Python开发工程师</span><span class="city"><i class="fa fa-map-marker"></i> 北京</span></p>
                 <p class="need"><span class="money">15K-25K</span>/经验3-5年/本科及以上/全职</p>
                 <p><span class="company">百度 &middot; 6天前</span></p>
               </li>
@@ -119,31 +49,6 @@
                 <p class="title">百度</p>
                 <p class="position"><a href="./recruit-company.html" target="_blank">32个职位</a></p>
               </li>
-              <li class="yui3-u-1-3 company-item">
-                <p><img src="../../assets/img/widget-toutiao.png" alt="" /></p>
-                <p class="title">百度</p>
-                <p class="position"><a href="./recruit-company.html" target="_blank">32个职位</a></p>
-              </li>
-              <li class="yui3-u-1-3 company-item">
-                <p><img src="../../assets/img/widget-baidu.png" alt="" /></p>
-                <p class="title">百度</p>
-                <p class="position"><a href="./recruit-company.html" target="_blank">32个职位</a></p>
-              </li>
-              <li class="yui3-u-1-3 company-item">
-                <p><img src="../../assets/img/widget-toutiao.png" alt="" /></p>
-                <p class="title">百度</p>
-                <p class="position"><a href="./recruit-company.html" target="_blank">32个职位</a></p>
-              </li>
-              <li class="yui3-u-1-3 company-item">
-                <p><img src="../../assets/img/widget-baidu.png" alt="" /></p>
-                <p class="title">百度</p>
-                <p class="position"><a href="./recruit-company.html" target="_blank">32个职位</a></p>
-              </li>
-              <li class="yui3-u-1-3 company-item">
-                <p><img src="../../assets/img/widget-toutiao.png" alt="" /></p>
-                <p class="title">百度</p>
-                <p class="position"><a href="./recruit-company.html" target="_blank">32个职位</a></p>
-              </li>
             </ul>
           </div>
         </div>
@@ -153,6 +58,31 @@
 </template>
 
 <script>
+  import jobsApi from '@/api/jobs.js'
+  export default {
+    data() {
+      return {
+        queryParams: {
+          page: 1,
+          size: 999
+        },
+        jobsList:[]
+      }
+    },
+    created() {
+      this.initActivity();
+    },
+    methods: {
+      initActivity() {
+        jobsApi.getJobsyByPage(this.queryParams).then(res => {
+          this.jobsList=res.data.data.list
+          sessionStorage.setItem('jobsList',JSON.stringify(this.jobsList))
+
+        })
+      }
+    }
+
+  }
 </script>
 
 <style>
@@ -163,9 +93,7 @@
     /*
      * colors variables
      */
-    html, body {
-     
-    }
+
 
     .wrapper {
       overflow: hidden;
