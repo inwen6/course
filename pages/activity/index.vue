@@ -9,17 +9,18 @@
         </div>
         <div class="activity-list">
           <ul class="activity">
-            <li class="activity-item">
+            <li class="activity-item" v-for="item in actList " :key="item.actId">
               <div class="activity-inner">
                 <a href="http://"></a>
                 <div class="img">
-                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-activity01.png" alt="" /></a>
+                  <a :href="'/activity/'+item.actId" target="_blank"><img src="../../assets/img/widget-activity01.png"
+                      alt="" /></a>
                 </div>
                 <div class="text">
-                  <p class="title">APMCon2017中国应用性能管理大会</p>
+                  <p class="title">{{item.actDesc}}</p>
                   <div class="fl goin">
-                    <p>时间：2017-07-29 周六</p>
-                    <p>城市：广州</p>
+                    <p>时间：{{item.createTime}}</p>
+                    <p>作者：{{item.authorName}}</p>
                   </div>
                   <div class="fr btn">
                     <span class="sui-btn btn-bao">查看详情</span>
@@ -28,64 +29,6 @@
                 </div>
               </div>
             </li>
-            <li class="activity-item">
-              <div class="activity-inner">
-                <a href="http://"></a>
-                <div class="img">
-                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-activity01.png" alt="" /></a>
-                </div>
-                <div class="text">
-                  <p class="title">APMCon2017中国应用性能管理大会</p>
-                  <div class="fl goin">
-                    <p>时间：2017-07-29 周六</p>
-                    <p>城市：广州</p>
-                  </div>
-                  <div class="fr btn">
-                    <span class="sui-btn btn-bao">活动结束</span>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-            </li>
-            <li class="activity-item">
-              <div class="activity-inner">
-                <a href="http://"></a>
-                <div class="img">
-                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-activity01.png" alt="" /></a>
-                </div>
-                <div class="text">
-                  <p class="title">APMCon2017中国应用性能管理大会</p>
-                  <div class="fl goin">
-                    <p>时间：2017-07-29 周六</p>
-                    <p>城市：广州</p>
-                  </div>
-                  <div class="fr btn">
-                    <span class="sui-btn btn-bao">查看详情</span>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-            </li>
-            <li class="activity-item">
-              <div class="activity-inner">
-                <a href="http://"></a>
-                <div class="img">
-                  <a href="./activity-detail.html" target="_blank"><img src="../../assets/img/widget-activity01.png" alt="" /></a>
-                </div>
-                <div class="text">
-                  <p class="title">APMCon2017中国应用性能管理大会</p>
-                  <div class="fl goin">
-                    <p>时间：2017-07-29 周六</p>
-                    <p>城市：广州</p>
-                  </div>
-                  <div class="fr btn">
-                    <span class="sui-btn btn-bao">查看详情</span>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-            </li>
-
           </ul>
         </div>
       </div>
@@ -95,6 +38,29 @@
 </template>
 
 <script>
+  import activityApi from '@/api/activity.js'
+  export default {
+    data() {
+      return {
+        queryParams: {
+          page: 1,
+          size: 999
+        },
+        actList:[]
+      }
+    },
+    created() {
+      this.initActivity();
+    },
+    methods: {
+      initActivity() {
+        activityApi.getActivityByPage(this.queryParams).then(res => {
+          this.actList=res.data.data.list
+        })
+      }
+    }
+
+  }
 </script>
 
 <style>
