@@ -60,4 +60,10 @@ export default{
         method: 'get'
     })
   },
+ //查询讲师信息
+ getTeacher(params){
+   return request({
+     url:`/users/cards/${params.teacherId}`
+   })
+ }
 }

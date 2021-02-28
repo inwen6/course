@@ -14,7 +14,7 @@
           <section class="p-h-video-box" id="videoPlay">
             <img height="357px" :src="course.courseImage" :alt="course.courseName" class="dis c-v-pic">
           </section>
-        </article> 
+        </article>
         <div class="clear"></div>
       </div>
       <!-- /课程封面介绍 -->
@@ -63,7 +63,7 @@
                                   <em class="lh-menu-i-2 icon16 mr5">&nbsp;</em>{{chapter.chapterName}}
                                 </a>
                               </li>
-                              
+
                             </ol>
 
                           </li>
@@ -88,14 +88,14 @@
                   <li>
                     <div class="u-face">
                       <a href="#">
-                        <img :src="courseWebVo.avatar" width="50" height="50" alt>
+                        <img :src="teacher.teacherCardAvatar" width="50" height="50" alt>
                       </a>
                     </div>
                     <section class="hLh30 txtOf">
-                      <a class="c-333 fsize16 fl" href="#">{{courseWebVo.teacherName}}</a>
+                      <a class="c-333 fsize16 fl" href="#">{{teacher.teacherCardName}}</a>
                     </section>
                     <section class="hLh20 txtOf">
-                      <span class="c-999">{{courseWebVo.intro}}</span>
+                      <span class="c-999">{{teacher.teacherCardDesc}}</span>
                     </section>
                   </li>
                 </ul>
@@ -124,7 +124,8 @@ export default {
        courseWebVo: {},
        chapterVideoList: [],
        isBuy: false,
-       course:''
+       course:'',
+       teacher:''
      }
    },
 
@@ -151,7 +152,7 @@ export default {
               console.log(response)
               // this.courseWebVo = response.data.data.courseWebVo
               this.chapterVideoList = response.data.data.list
-              // this.isBuy = response.data.data.isBuy 
+              // this.isBuy = response.data.data.isBuy
              //第一个参数cookie名称，第二个参数值，第三个参数作用范围
              cookie.set('VideoList',response.data.data.list,{domain: 'localhost'})
             })
@@ -160,7 +161,15 @@ export default {
             .then(response =>{
               console.log(response)
               this.course = response.data.data
+             // 查询课程详情
+              courseApi.getTeacher(this.course.courseAuthorId)
+                .then(response =>{
+                  this.teacher=response.data.data
+                  console.log(this.teacher)
+                })
             })
+
+
       }
   }
 };
