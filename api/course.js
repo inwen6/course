@@ -1,7 +1,7 @@
 /*
  * @Author: inwen6
  * @Date: 2021-02-28 00:38:37
- * @LastEditTime: 2021-02-28 15:26:29
+ * @LastEditTime: 2021-02-28 15:55:49
  * @LastEditors: Please set LastEditors
  * @Description: 描述
  * @FilePath: /course/api/course.js
@@ -50,6 +50,13 @@ export default{
   getcourse(id){
     return request({
         url: `/courses/course/${id}`,
+        method: 'get'
+    })
+  },
+//   查询课程
+  getallcourse(params){
+    return request({
+        url: `/courses/course/${params.page}/${params.size}`,
         method: 'get'
     })
   },
