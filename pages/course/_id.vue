@@ -49,18 +49,18 @@
                       <menu id="lh-menu" class="lh-menu mt10 mr10">
                         <ul>
                           <!-- 文件目录 -->
-                          <li class="lh-menu-stair" v-for="chapter in chapterVideoList" :key="chapter.id">
+                          <li class="lh-menu-stair" v-for="chapter in chapterVideoList" :key="chapter.courseId">
                             <a href="javascript: void(0)" :title="chapter.chapterName" class="current-1">
                               <em class="lh-menu-i-1 icon18 mr10"></em>{{chapter.chapterName}}
                             </a>
 
                             <ol class="lh-menu-ol" style="display: block;">
-                              <li class="lh-menu-second ml30" v-for="video in chapter.children" :key="video.id">
-                                <a :href="'/player/'+video.videoSourceId" target="_blank">
+                              <li class="lh-menu-second ml30">
+                                <a :href="'/player/'+chapter.courseId" target="_blank">
                                   <span class="fr">
-                                    <i class="free-icon vam mr10">免费试听</i>
+                                    <i class="free-icon vam mr10">免费观看</i>
                                   </span>
-                                  <em class="lh-menu-i-2 icon16 mr5">&nbsp;</em>{{video.title}}
+                                  <em class="lh-menu-i-2 icon16 mr5">&nbsp;</em>{{chapter.chapterName}}
                                 </a>
                               </li>
                               
@@ -113,6 +113,7 @@
 <script>
 import courseApi from '@/api/course'
 import orderApi from '@/api/orders'
+  import cookie from 'js-cookie'
 export default {
    asyncData({ params, error }) {
     return {courseId:params.id}
@@ -150,7 +151,9 @@ export default {
               console.log(response)
               // this.courseWebVo = response.data.data.courseWebVo
               this.chapterVideoList = response.data.data.list
-              // this.isBuy = response.data.data.isBuy
+              // this.isBuy = response.data.data.isBuy 
+             //第一个参数cookie名称，第二个参数值，第三个参数作用范围
+             cookie.set('VideoList',response.data.data.list,{domain: 'localhost'})
             })
         // 查询课程详情
          courseApi.getcourse(this.courseId)
