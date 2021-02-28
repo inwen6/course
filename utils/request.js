@@ -1,7 +1,7 @@
 /*
  * @Author: inwen6
  * @Date: 2021-02-28 00:38:37
- * @LastEditTime: 2021-02-28 14:44:35
+ * @LastEditTime: 2021-02-28 19:35:27
  * @LastEditors: Please set LastEditors
  * @Description: 描述
  * @FilePath: /course/utils/request.js
@@ -60,7 +60,10 @@ service.interceptors.response.use(
       }
     }
   },
-  error => {
+  error => {  
+    if(error.response.status == 401){
+      window.location.href="/login"
+    }
     return Promise.reject(error.response)   // 返回接口返回的错误信息
 });
 export default service
