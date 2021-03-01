@@ -12,7 +12,7 @@ export default{
 
     //会员登录
     submitLogin(userInfo){
-        return request({ 
+        return request({
             url: '/user/login',
             method: 'get',
             params: userInfo
@@ -20,10 +20,11 @@ export default{
     },
 
     //根据token获取会员信息
-    getMemberInfo(){
+    getMemberInfo(token){
         return request({
-            url: '/ucenter/member/getMemberInfo',
+            url: '/users/user/info',
             method: 'get',
+            params: { token },
         })
     }
 }

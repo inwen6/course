@@ -38,7 +38,7 @@
           <!-- / nav -->
            <!-- / nav -->
 <ul class="h-r-login">
-    <li v-if="!loginInfo.id" id="no-login">
+    <li v-if="!loginInfo.name" id="no-login">
         <a href="/login" title="登录">
             <em class="icon18 login-icon">&nbsp;</em>
             <span class="vam ml5">登录</span>
@@ -48,13 +48,13 @@
             <span class="vam ml5">注册</span>
         </a>
     </li>
-    <li v-if="loginInfo.id" id="is-login-one" class="mr10">
+    <li v-if="loginInfo.name" id="is-login-one" class="mr10">
         <a id="headerMsgCountId" href="#" title="消息">
             <em class="icon18 news-icon">&nbsp;</em>
         </a>
         <q class="red-point" style="display: none">&nbsp;</q>
     </li>
-    <li v-if="loginInfo.id" id="is-login-two" class="h-r-user">
+    <li v-if="loginInfo.name" id="is-login-two" class="h-r-user">
         <a href="/ucenter" title>
             <img
                  :src="loginInfo.avatar"
@@ -63,7 +63,7 @@
                  class="vam picImg"
                  alt
                  >
-            <span id="userName" class="vam disIb">{{ loginInfo.nickname }}</span>
+            <span id="userName" class="vam disIb">{{ loginInfo.name }}</span>
         </a>
         <a href="javascript:void(0);" title="退出" @click="logout()" class="ml5">退出</a>
     </li>

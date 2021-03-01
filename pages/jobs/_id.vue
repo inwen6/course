@@ -2,32 +2,12 @@
   <div class="wrapper">
      <div class="fl left-list ">
         <div class="tit">
-         <span>职位描述</span>
+         <span>{{jobs.jobsTitle}}</span>
         </div>
-        <div class="content">
-         <p>我们提供：</p>
-         <p>富有市场竞争力的薪水；</p>
-         <p>一套程序猿的顶级梦幻装备， 一台顶级CPU+大内存+SSD台式机+护眼显示屏，一把舒适的人体工程学座椅；</p>
-         <p>一群聪明欢乐的小伙伴们；</p>
-         <p>顶级IT创业公司提供的大平台，丰富的晋升机制；</p>
-         <p>提供独立的单身公寓，空调热水。</p>
-         <p>提供五险，双休和法定假日休假</p>
+        <div class="content" v-html="jobs.jobsContent">
+
         </div>
-        <div class="tit">
-         <span>职位要求</span>
-        </div>
-        <div class="content">
-         <p>对新技术有好奇心, 学习能力强, 良好的英文资料阅读能力</p>
-         <p>熟悉面向对象编程, 有良好的编程⻛格和习惯.</p>
-         <p>良好的团队合作精神和沟通能力，勤奋上进</p>
-         <p>熟练使用PHP, 熟悉symfony/laravel优先.</p>
-         <p>熟悉HTML/CSS/JS, 懂vuejs优先.</p>
-         <p>熟悉 Linux/Mac 开发环境</p>
-         <p>熟悉 MySQL 数据库，掌握 MongoDB, Redis 等 NoSQL</p>
-         <p>熟悉git协作</p>
-         <p>*我们是正域团队,，我们正在做一件改变行业的事情，</p>
-         <p>如果你激情四射、胆大有料、敢想敢干、协作一流， 立刻加入我们！</p>
-        </div>
+
         <div class="time">
          发布于1小时前
         </div>
@@ -37,6 +17,29 @@
 </template>
 
 <script>
+  export default{
+    data(){
+      return{
+        jobs:{}
+      }
+    },
+    asyncData({ params, error }) { //服务端执行
+     return {caseId:params.id}
+    },
+    mounted() {
+      let arr = JSON.parse(sessionStorage.getItem("jobsList"));
+      for (var i = 0; i < arr.length; i++) {
+          if(arr[i].jobsId==this.caseId){
+            this.jobs=arr[i]
+            console.log(this.jobs)
+          }
+      }
+  
+    },
+    methods:{
+  
+    }
+  }
 </script>
 
 <style scoped="scoped">

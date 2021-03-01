@@ -1,7 +1,14 @@
 <template>
   <div>
+    <!-- /无数据提示 开始-->
+    <section class="no-data-wrap" v-if="!caseList">
+      <em class="icon30 no-data-ico">&nbsp;</em>
+      <span class="c-666 fsize14 ml10 vam">没有相关数据，小编正在努力整理中...</span>
+    </section>
     <!--中间布局-->
     <div class="wrapper activities">
+      <!-- /无数据提示 开始-->
+
       <div class="activity-card-list">
         <div class="top-title">
           <h4 class="latest">就业案例</h4>

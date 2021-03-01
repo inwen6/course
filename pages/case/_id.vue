@@ -7,7 +7,7 @@
           <img src="../../assets/img/widget-acti.png" alt="" />
         </div>
         <div class="right-txt ">
-          <p class="big">发布时间： 2017-07-07 08:00 周五</p>
+          <p class="big">发布时间： {{case1.createTime ? case1.createTime : new Date()}}</p>
           <p>举办地点： 深圳市华侨城洲际酒店</p>
 <!--         <p>报名截止： <span class="big">85</span>天 <span class="big">15</span>时 <span class="big">16</span>分 <span class="big">10</span>秒</p>
  -->        <!--  <div class="join">

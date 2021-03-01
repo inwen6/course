@@ -1,5 +1,9 @@
 <template>
   <div id="aCoursesList" class="bg-fa of">
+    <section class="no-data-wrap" v-if="!data">
+      <em class="icon30 no-data-ico">&nbsp;</em>
+      <span class="c-666 fsize14 ml10 vam">没有相关数据，小编正在努力整理中...</span>
+    </section>
     <!-- /课程列表 开始 -->
     <section class="container">
       <header class="comm-title">
@@ -9,11 +13,7 @@
       </header>
       <section class="c-sort-box">
         <div class="mt40">
-          <!-- /无数据提示 开始-->
-          <section class="no-data-wrap" v-if="data.total==0">
-            <em class="icon30 no-data-ico">&nbsp;</em>
-            <span class="c-666 fsize14 ml10 vam">没有相关数据，小编正在努力整理中...</span>
-          </section>
+      
           <!-- /无数据提示 结束-->
           <article  v-if="data.length>0" class="comm-course-list">
             <ul class="of" id="bna">

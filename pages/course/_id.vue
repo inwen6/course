@@ -146,7 +146,7 @@ export default {
 
       initCourseInfo(){
         // 查询章节
-         courseApi.getAllchapter({page:1,size:10,courseId:this.courseId})
+         courseApi.getAllchapter({page:1,size:99,courseId:this.courseId})
             .then(response =>{ 
               this.chapterVideoList = response.data.data.list 
               sessionStorage.setItem('VideoList',JSON.stringify(response.data.data.list))
