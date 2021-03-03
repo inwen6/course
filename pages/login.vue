@@ -83,6 +83,7 @@
              cookie.set('Authorization',response.data.data.accessToken,{domain: 'localhost'})
              loginApi.getMemberInfo(this.token).then(res => {
                this.loginInfo = res.data.data
+
                cookie.set('guli_ucenter',this.loginInfo,{domain: 'localhost'})
               // 跳转页面
                window.location.href = "/";

@@ -38,7 +38,7 @@
           <!-- / nav -->
            <!-- / nav -->
 <ul class="h-r-login">
-    <li v-if="!loginInfo.name" id="no-login">
+    <li v-if="!loginInfo.avatar" id="no-login">
         <a href="/login" title="登录">
             <em class="icon18 login-icon">&nbsp;</em>
             <span class="vam ml5">登录</span>
@@ -48,13 +48,13 @@
             <span class="vam ml5">注册</span>
         </a>
     </li>
-    <li v-if="loginInfo.name" id="is-login-one" class="mr10">
+    <li v-if="loginInfo.avatar" id="is-login-one" class="mr10">
         <a id="headerMsgCountId" href="#" title="消息">
             <em class="icon18 news-icon">&nbsp;</em>
         </a>
         <q class="red-point" style="display: none">&nbsp;</q>
     </li>
-    <li v-if="loginInfo.name" id="is-login-two" class="h-r-user">
+    <li v-if="loginInfo.avatar" id="is-login-two" class="h-r-user">
         <a href="/ucenter" title>
             <img
                  :src="loginInfo.avatar"
@@ -202,6 +202,7 @@ export default {
       // 把字符串转换json对象(js对象)
       if(userStr) {
         this.loginInfo = JSON.parse(userStr)
+        console.log(this.loginInfo)
       }
     },
 
