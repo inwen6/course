@@ -65,5 +65,11 @@ export default{
    return request({
      url:`/users/cards/${params.teacherId}`
    })
+ },
+ //查询作业
+ getTasks(params){
+   return request({
+     url:`/courses/task/${params.chapterId}`
+   })
  }
 }

@@ -113,6 +113,7 @@ export default {
       courseApi.getallcourse(this.queryParams).then(response => {
         console.log(response.data.data.list)
         this.data = response.data.data.list
+        sessionStorage.setItem("courseList",JSON.stringify(this.data))
       })
     },
 

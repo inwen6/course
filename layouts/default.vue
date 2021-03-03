@@ -31,9 +31,12 @@
             <router-link to="/jobs" tag="li" active-class="current">
               <a>招聘</a>
             </router-link>
-            <router-link to="/qa" tag="li" active-class="current">
-              <a>问答</a>
+            <router-link to="/task" tag="li" active-class="current">
+              <a>作业</a>
             </router-link>
+        <!--    <router-link to="/qa" tag="li" active-class="current">
+              <a>问答</a>
+            </router-link> -->
           </ul>
           <!-- / nav -->
            <!-- / nav -->
