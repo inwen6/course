@@ -89,13 +89,13 @@
                window.location.href = "/";
              })
 
-              //第四步 调用接口 根据token获取用户信息，为了首页面显示
-              // loginApi.getMemberInfo()
-              //   .then(response => {
-              //     this.loginInfo = response.data.data.member
-              //     //获取返回用户信息，放到cookie里面
-              //     cookie.set('guli_ucenter',this.loginInfo,{domain: 'localhost'})
-              //   })
+             // 第四步 调用接口 根据token获取用户信息，为了首页面显示
+              loginApi.getMemberInfo()
+                .then(response => {
+                  this.loginInfo = response.data.data
+                  //获取返回用户信息，放到cookie里面
+                  cookie.set('guli_ucenter',this.loginInfo,{domain: 'localhost'})
+                })
 
            })
       },
