@@ -1,6 +1,6 @@
 <template>
   <div class="Content ">
-      <h1 class="head" style="background-color: #FF4A56;color: #FFFFFF;">作业</h1>
+      <h1 class="head" style="background-color: #409EFF;color: #FFFFFF;">作业</h1>
       <el-card>
         <div style="margin-left: 20px;"><h1>作业题目:</h1>{{task.taskTitle}}</div>
         <div style="margin-left: 20px;"><h1 >作业内容</h1></div>
