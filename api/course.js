@@ -1,3 +1,11 @@
+/*
+ * @Author: inwen6
+ * @Date: 2021-02-28 00:38:37
+ * @LastEditTime: 2021-02-28 15:55:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 描述
+ * @FilePath: /course/api/course.js
+ */
 import request from '@/utils/request'
 
 export default{
@@ -29,5 +37,39 @@ export default{
           url: '/edu/subject/findAllSubject',
           method: 'get'
       })
-  }
+  },
+//   查询所有章节
+  getAllchapter(paeams){
+    return request({
+        url: `/courses/chapter/search/${paeams.page}/${paeams.size}`,
+        method: 'post',
+        data:paeams
+    })
+  },
+//   查询课程详情
+  getcourse(id){
+    return request({
+        url: `/courses/course/${id}`,
+        method: 'get'
+    })
+  },
+//   查询课程
+  getallcourse(params){
+    return request({
+        url: `/courses/course/${params.page}/${params.size}`,
+        method: 'get'
+    })
+  },
+ //查询讲师信息
+ getTeacher(params){
+   return request({
+     url:`/users/cards/${params.teacherId}`
+   })
+ },
+ //查询作业
+ getTasks(params){
+   return request({
+     url:`/courses/task/${params.chapterId}`
+   })
+ }
 }
