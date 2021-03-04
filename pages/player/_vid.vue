@@ -20,21 +20,29 @@
     <div id="J_prismPlayer" class="prism-player" />
   </div>
 </template>
-<script> 
+<script>
   import cookie from 'js-cookie'
+  import courseApi from '@/api/course'
 export default {
-    layout: 'video',//应用video布局 
+    layout: 'video',//应用video布局
    asyncData({ params, error }) { //服务端执行
     return {vid:params.vid}
    },
-    mounted() { //页面渲染之后  created  
+    mounted() { //页面渲染之后  created
         let arr = JSON.parse(sessionStorage.getItem('VideoList'))
         let url = ''
         for(let i=0;i<arr.length;i++){
-            if(arr[i].chapterId == this.vid){ 
+            if(arr[i].chapterId == this.vid){
                 url = arr[i].chapterVideoUrl
+                var studyList = JSON.parse(sessionStorage.getItem("studyList"))
+                studyList.chapterId = arr[i].chapterId
+                studyList.chapterName = arr[i].chapterName
+               //保存学习进度
+                 courseApi.saveStudyList(studyList).then(res=>{
+                   console.log(res)
+                 })
             }
-        }  
+        }
         new Aliplayer({
             "id": "J_prismPlayer",
             "source": url,

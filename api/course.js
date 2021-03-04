@@ -71,5 +71,20 @@ export default{
    return request({
      url:`/courses/task/${params.chapterId}`
    })
+ },
+ ///users/studyList/
+ //查询作业
+ saveStudyList(params){
+   return request({
+     url:`users/studyList/`,
+     method: 'post',
+     data:params
+   })
+ },
+ getStudyList(){
+   return request({
+     url:`users/studyList/`,
+     method: 'get'
+   })
  }
 }

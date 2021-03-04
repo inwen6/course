@@ -7,9 +7,10 @@
     </el-card>
     <el-card class="chapter-list "  v-if="showDialog">
          <h1>选择作业所属章节 <el-button class="Right" type="danger " @click="closeChapter()" round>关闭</el-button></h1>
-        <ul>
+        <ul v-if="chapterList">
             <li v-for="chapter in chapterList" v-bind:key="chapter.chapterId"><a :href="'/task/'+chapter.chapterId" >{{chapter.chapterName}}</a></li>
         </ul>
+        <el-card style="margin-top: 40px;" v-if="chapterList.length==0">老师还没布置作业!!!</el-card>
     </el-card>
   </div>
 </template>
@@ -75,7 +76,7 @@
     margin-left: 40px;
   }
   .chapter-list{
-    position: absolute;
+    position: fixed;
     z-index: 10;
     width: 90%;
     height: 400px;
