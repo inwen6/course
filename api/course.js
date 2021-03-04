@@ -1,7 +1,7 @@
 /*
  * @Author: inwen6
  * @Date: 2021-02-28 00:38:37
- * @LastEditTime: 2021-02-28 15:55:49
+ * @LastEditTime: 2021-03-05 00:02:36
  * @LastEditors: Please set LastEditors
  * @Description: 描述
  * @FilePath: /course/api/course.js
@@ -70,6 +70,14 @@ export default{
  getTasks(params){
    return request({
      url:`/courses/task/${params.chapterId}`
+   })
+ },
+//  添加作业
+ addTasks(data){
+   return request({
+     url:`/courses/task/`,
+     method: 'put',
+     data
    })
  }
 }

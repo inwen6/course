@@ -3,12 +3,15 @@
     <h1>请选择作业所属课程</h1>
     <el-card class="couse-list" v-for="course in courseList" v-bind:key="course.courseId">
       {{course.courseName}}
-      <button type="default" class="Right" @click="showChapter(course.courseId)">查看章节</button>
+      <button type="default" class="Right" @click="showChapter(course)">查看章节</button>
     </el-card>
     <el-card class="chapter-list "  v-if="showDialog">
          <h1>选择作业所属章节 <el-button class="Right" type="danger " @click="closeChapter()" round>关闭</el-button></h1>
         <ul>
-            <li v-for="chapter in chapterList" v-bind:key="chapter.chapterId"><a :href="'/task/'+chapter.chapterId" >{{chapter.chapterName}}</a></li>
+            <li v-for="chapter in chapterList" v-bind:key="chapter.chapterId">
+              <!-- <a :href="'/task/'+chapter.chapterId" >{{chapter.chapterName}}</a> -->
+              <p @click="routerJump(chapter)">{{chapter.chapterName}}</p>
+            </li>
         </ul>
     </el-card>
   </div>
@@ -36,22 +39,29 @@
         defaultProps: {
           children: 'children',
           label: 'courseName'
-        }
+        },
+        teacherId:''
       };
     },
     mounted() {
       this.showDialog=false
       courseApi.getallcourse(this.queryParams).then(response => {
-        console.log(response.data.data.list)
         this.courseList = response.data.data.list
 
       })
     },
     methods: {
-      showChapter(courseId){
+      routerJump(row){
+        row.teacherId = this.teacherId
+        this.$router.push({
+          name: 'task-id',params:{id:row}
+        })
+      },
+      showChapter(course){
+        this.teacherId = course.courseAuthorId || ''
           this.showDialog=true
           this.chapterList=""
-          courseApi.getAllchapter({page:1,size:99,courseId:courseId})
+          courseApi.getAllchapter({page:1,size:99,courseId:course.courseId})
              .then(response =>{
                this.chapterList = response.data.data.list
 

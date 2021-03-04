@@ -183,21 +183,15 @@
       wxLogin() {
         //console.log('************'+this.token)
         //把token值放到cookie里面
-        cookie.set('guli_token', this.token, {
-          domain: 'localhost'
-        })
-        cookie.set('guli_ucenter', '', {
-          domain: 'localhost'
-        })
+        cookie.set('guli_token', this.token )
+        cookie.set('guli_ucenter', '', )
         //console.log('====='+cookie.get('guli_token'))
         //调用接口，根据token值获取用户信息
         loginApi.getMemberInfo()
           .then(response => {
             // console.log('################'+response.data.data.userInfo)
             this.loginInfo = response.data.data.member
-            cookie.set('guli_ucenter', this.loginInfo, {
-              domain: 'localhost'
-            })
+            cookie.set('guli_ucenter', this.loginInfo)
           })
       },
       //创建方法，从cookie获取用户信息
@@ -214,12 +208,8 @@
       //退出
       logout() {
         //清空cookie值
-        cookie.set('guli_token', '', {
-          domain: 'localhost'
-        })
-        cookie.set('guli_ucenter', '', {
-          domain: 'localhost'
-        })
+        cookie.set('guli_token', '')
+        cookie.set('guli_ucenter', '' )
         //回到首页面
         window.location.href = "/";
       }

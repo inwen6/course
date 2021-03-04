@@ -1,7 +1,7 @@
 <!--
  * @Author: inwen6
  * @Date: 2021-02-28 00:38:37
- * @LastEditTime: 2021-02-28 14:48:54
+ * @LastEditTime: 2021-03-05 00:09:54
  * @LastEditors: Please set LastEditors
  * @Description: 描述
  * @FilePath: /course/pages/login.vue
@@ -80,11 +80,11 @@
              console.log(response)
              //第二步 获取token字符串放到cookie里面
              //第一个参数cookie名称，第二个参数值，第三个参数作用范围
-             cookie.set('Authorization',response.data.data.accessToken,{domain: 'localhost'})
+             cookie.set('Authorization',response.data.data.accessToken)
              loginApi.getMemberInfo(this.token).then(res => {
                this.loginInfo = res.data.data
 
-               cookie.set('guli_ucenter',this.loginInfo,{domain: 'localhost'})
+               cookie.set('guli_ucenter',this.loginInfo)
               // 跳转页面
                window.location.href = "/";
              })
@@ -94,7 +94,7 @@
                 .then(response => {
                   this.loginInfo = response.data.data
                   //获取返回用户信息，放到cookie里面
-                  cookie.set('guli_ucenter',this.loginInfo,{domain: 'localhost'})
+                  cookie.set('guli_ucenter',this.loginInfo)
                 })
 
            })
