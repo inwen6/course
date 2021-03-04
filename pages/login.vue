@@ -1,10 +1,10 @@
 <!--
  * @Author: inwen6
  * @Date: 2021-02-28 00:38:37
- * @LastEditTime: 2021-02-28 14:48:54
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-03-04 15:15:21
+ * @LastEditors: your name
  * @Description: 描述
- * @FilePath: /course/pages/login.vue
+ * @FilePath: /accccc/pages/login.vue
 -->
 <template>
   <div class="main">

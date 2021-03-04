@@ -1,10 +1,10 @@
 /*
  * @Author: inwen6
  * @Date: 2021-02-28 00:38:37
- * @LastEditTime: 2021-02-28 19:35:27
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-03-04 15:24:55
+ * @LastEditors: your name
  * @Description: 描述
- * @FilePath: /course/utils/request.js
+ * @FilePath: /accccc/utils/request.js
  */
 import axios from 'axios'
 import cookie from 'js-cookie'
@@ -43,6 +43,7 @@ service.interceptors.response.use(
         console.log("response.data.resultCode是28004")
         // 返回 错误代码-1 清除ticket信息并跳转到登录页面
         //debugger
+        alert(JSON.stringify(response))
         window.location.href="/login"
         return
     }else{
@@ -62,7 +63,8 @@ service.interceptors.response.use(
   },
   error => {  
     if(error.response.status == 401){
-      window.location.href="/login"
+      alert(JSON.stringify(error))
+      // window.location.href="/login"
     }
     return Promise.reject(error.response)   // 返回接口返回的错误信息
 });
