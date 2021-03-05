@@ -5,22 +5,23 @@
       {{course.courseName}}
       <button type="default" class="Right" @click="showChapter(course.courseId)">查看章节</button>
     </el-card>
-    <el-card class="chapter-list "  v-if="showDialog">
+    <!-- <el-card class="chapter-list "  v-if="showDialog">
          <h1>选择作业所属章节 <el-button class="Right" type="danger " @click="closeChapter()" round>关闭</el-button></h1>
         <ul v-if="chapterList">
             <li v-for="chapter in chapterList" v-bind:key="chapter.chapterId"><a :href="'/task/'+chapter.chapterId" >{{chapter.chapterName}}</a></li>
         </ul>
-    </el-card>
-  <!--  <el-card class="chapter-list "  v-if="showDialog">
+    </el-card> -->
+   <el-card class="chapter-list "  v-if="showDialog">
          <h1>选择作业所属章节 <el-button class="Right" type="danger " @click="closeChapter()" round>关闭</el-button></h1>
         <ul>
             <li v-for="chapter in chapterList" v-bind:key="chapter.chapterId">
-              <a :href="'/task/'+chapter.chapterId" >{{chapter.chapterName}}</a>
-              <p @click="routerJump(chapter)">{{chapter.chapterName}}</p>
+              <!-- <p class="shou" @click="routerJump(chapter)">{{chapter.chapterName}}</p> --> 
+              <!-- <a :href="'/task/'+chapter.chapterId" >{{chapter.chapterName}}</a> -->
+              <router-link :to="'/task/'+chapter.chapterId" tag="a">{{chapter.chapterName}}</router-link>
             </li>
         </ul>
 
-    </el-card> -->
+    </el-card>
   </div>
 </template>
 
@@ -46,9 +47,9 @@
     },
     methods: {
       routerJump(row){
-        row.teacherId = this.teacherId
+        // row.teacherId = this.teacherId
         this.$router.push({
-          name: 'task-id',params:{id:row}
+          path: '/task/',query:{id:row.chapterId}
         })
       },
       showChapter(courseId){
@@ -107,7 +108,9 @@
   .el-card__body{
     height: 100%;
   }
-
+  .shou{
+    cursor: pointer;
+  }
 
 
 </style>
