@@ -29,21 +29,21 @@
      return {chapter:params.id}
     },
     mounted() {
-      // this.initTask();
+      this.initTask();
 
     },
     methods:{
       initTask(){
-          // courseApi.getTasks({chapterId:this.chapter.chapterId}).then(response => {
-          //   this.task = response.data.data.tbTask
-          // })
+          courseApi.getTasks({chapterId:this.chapter.chapterId}).then(response => {
+            this.task = response.data.data.tbTask
+          })
       },
       submit(){
-        // let obj = Object.assign(this.task,{chapterId:this.chapter.chapterId})
-        //   courseApi.addTasks(obj).then(response => {
-        //     // this.task = response.data.data.tbTask
-        //     alert(response.data.message)
-        //   })
+        let obj = Object.assign(this.task,{chapterId:this.chapter.chapterId})
+          courseApi.addTasks(obj).then(response => {
+            // this.task = response.data.data.tbTask
+            alert(response.data.message)
+          })
       }
     }
   }
