@@ -57,7 +57,7 @@
                               <li class="lh-menu-second ml30">
                                 <a :href="'/player/'+chapter.chapterId" target="_blank">
                                   <span class="fr">
-                                    <i class="free-icon vam mr10 blue-btn" v-if="existChapterId(chapter.chapterId)">已学习</i>
+                                    <i class="free-icon vam mr10 blue-btn " v-if="existChapterId(chapter.chapterId)">已学习</i>
                                   </span>
                                   <span class="fr">
                                     <i class="free-icon vam mr10">免费观看</i>
