@@ -15,37 +15,35 @@
             </router-link>
             <router-link to="/course" tag="li" active-class="current linkStyle">
               <a>教学</a>
-
-              <div class="positionsDiv"> 
+              <div class="positionsDiv">
                 <router-link tag="div" to="/course">课程</router-link>
-                <router-link tag="div" to="/">作业</router-link>
+                <router-link tag="div" to="/task">作业</router-link>
               </div>
-
             </router-link>
-            <router-link to="/teacher" tag="li" active-class="current linkStyle">
+            <router-link to="/activity" tag="li" active-class="current linkStyle">
               <a>学工</a>
 
-              <div class="positionsDiv"> 
+              <div class="positionsDiv">
                 <router-link tag="div" to="/course">满意度</router-link>
                 <router-link tag="div" to="/">考勤</router-link>
                 <router-link tag="div" to="/course">演讲</router-link>
-                <router-link tag="div" to="/">活动</router-link>
+                <router-link tag="div" to="/case">活动</router-link>
               </div>
 
             </router-link>
-            <router-link to="/article" tag="li" active-class="current">
+            <router-link to="/jobs" tag="li" active-class="current">
               <a>就业</a>
 
-              <div class="positionsDiv"> 
-                <router-link tag="div" to="/course">资讯</router-link> 
-                <router-link tag="div" to="/">活动</router-link>
-                <router-link tag="div" to="/">案例</router-link>
+              <div class="positionsDiv">
+                <router-link tag="div" to="/jobs">资讯</router-link>
+                <router-link tag="div" to="/activity">活动</router-link>
+                <router-link tag="div" to="/case">案例</router-link>
               </div>
 
-            </router-link> 
-          </ul> 
+            </router-link>
+          </ul>
           <ul class="h-r-login">
-            <li v-if="!loginInfo.id" id="no-login">
+            <li v-if="!loginInfo.avatar" id="no-login">
               <a href="/login" title="登录">
                 <em class="icon18 login-icon">&nbsp;</em>
                 <span class="vam ml5">登录</span>
@@ -55,13 +53,13 @@
                 <span class="vam ml5">注册</span>
               </a> -->
             </li>
-            <li v-if="loginInfo.id" id="is-login-one" class="mr10">
+            <li v-if="loginInfo.avatar" id="is-login-one" class="mr10">
               <a id="headerMsgCountId" href="#" title="消息">
                 <em class="icon18 news-icon">&nbsp;</em>
               </a>
               <q class="red-point" style="display: none">&nbsp;</q>
             </li>
-            <li v-if="loginInfo.id" id="is-login-two" class="h-r-user">
+            <li v-if="loginInfo.avatar" id="is-login-two" class="h-r-user">
               <a href="/ucenter" title>
                 <img :src="loginInfo.avatar" width="30" height="30" class="vam picImg" alt>
                 <span id="userName" class="vam disIb">{{ loginInfo.nickname }}</span>
@@ -171,13 +169,14 @@
       }
     },
     created() {
+    },
+    mounted(){
       //获取路径里面token值
       this.token = this.$route.query.token
       console.log(this.token)
       if (this.token) { //判断路径是否有token值
         this.wxLogin()
       }
-
       this.showInfo()
     },
     methods: {
@@ -185,27 +184,22 @@
       wxLogin() {
         //console.log('************'+this.token)
         //把token值放到cookie里面
-        cookie.set('guli_token', this.token, {
-          domain: 'localhost'
-        })
-        cookie.set('guli_ucenter', '', {
-          domain: 'localhost'
-        })
+        cookie.set('guli_token', this.token )
+        cookie.set('guli_ucenter', '', )
         //console.log('====='+cookie.get('guli_token'))
         //调用接口，根据token值获取用户信息
         loginApi.getMemberInfo()
           .then(response => {
             // console.log('################'+response.data.data.userInfo)
             this.loginInfo = response.data.data.member
-            cookie.set('guli_ucenter', this.loginInfo, {
-              domain: 'localhost'
-            })
+            cookie.set('guli_ucenter', this.loginInfo)
           })
       },
       //创建方法，从cookie获取用户信息
       showInfo() {
         //从cookie获取用户信息
         var userStr = cookie.get('guli_ucenter')
+        console.log(userStr)
         // 把字符串转换json对象(js对象)
         if (userStr) {
           this.loginInfo = JSON.parse(userStr)
@@ -215,12 +209,8 @@
       //退出
       logout() {
         //清空cookie值
-        cookie.set('guli_token', '', {
-          domain: 'localhost'
-        })
-        cookie.set('guli_ucenter', '', {
-          domain: 'localhost'
-        })
+        cookie.set('guli_token', '')
+        cookie.set('guli_ucenter', '' )
         //回到首页面
         window.location.href = "/";
       }
@@ -235,19 +225,19 @@
   }
   .nav li:hover .positionsDiv{
     display: block;
-  } 
-  .positionsDiv{ 
-    width: 80px; 
+  }
+  .positionsDiv{
+    width: 80px;
     background: #eee;
     position: absolute;
     top: 52px;
     z-index: 9999;
     display: none;
-    box-sizing: border-box; 
+    box-sizing: border-box;
   }
   .positionsDiv div{
     width: 100%;
-    height: 40px; 
+    height: 40px;
     text-align: center;
     line-height: 40px;
     cursor: pointer;

@@ -1,6 +1,15 @@
+/*
+ * @Author: inwen6
+ * @Date: 2021-03-04 21:46:05
+ * @LastEditTime: 2021-03-05 13:40:59
+ * @LastEditors: your name
+ * @Description: 描述
+ * @FilePath: /accccc/nuxt.config.js
+ */
 module.exports = {
   plugins: [
-    { src: '~/plugins/nuxt-swiper-plugin.js', ssr: false }
+    { src: '~/plugins/nuxt-swiper-plugin.js', ssr: false },
+    { src: '~/utils/oss.js', ssr: false }
   ],
 
   css: [
@@ -18,6 +27,9 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script:[
+      { type:"text/javascript" ,charset:"utf-8", src:"https://g.alicdn.com/de/prismplayer/2.9.3/aliplayer-min.js" }
     ]
   },
   /*

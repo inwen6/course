@@ -130,9 +130,10 @@ export default {
 
   //在页面渲染之前执行
   created(){
+  },
+  mounted(){
       this.initCourseInfo()
   },
-
   methods:{
       //生成
       createOrders(){

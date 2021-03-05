@@ -102,6 +102,8 @@ export default {
     }
   },
   created() {
+  },
+  mounted(){
     //课程第一次查询
     this.initCourseFirst()
     //一级分类显示

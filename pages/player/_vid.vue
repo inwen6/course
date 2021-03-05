@@ -1,10 +1,10 @@
 <!--
  * @Author: inwen6
  * @Date: 2021-02-28 00:38:37
- * @LastEditTime: 2021-02-28 18:24:17
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-03-05 12:02:17
+ * @LastEditors: your name
  * @Description: 描述
- * @FilePath: /course/pages/player/_vid.vue
+ * @FilePath: /accccc/pages/player/_vid.vue
 -->
 <template>
   <div>
@@ -14,14 +14,16 @@
     <!-- 阿里云视频播放器脚本 -->
     <!-- <script charset="utf-8" type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.8.1/aliplayer-min.js" /> -->
 
-    <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.3/skins/default/aliplayer-min.css" />
-    <script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/de/prismplayer/2.9.3/aliplayer-min.js"></script>
+      <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.3/skins/default/aliplayer-min.css" />
+      <no-ssr>
+        <script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/de/prismplayer/2.9.3/aliplayer-min.js"></script>
+      </no-ssr>
+    
     <!-- 定义播放器dom -->
     <div id="J_prismPlayer" class="prism-player" />
   </div>
 </template>
-<script> 
-  import cookie from 'js-cookie'
+<script>  
 export default {
     layout: 'video',//应用video布局 
    asyncData({ params, error }) { //服务端执行
