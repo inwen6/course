@@ -53,17 +53,18 @@
                             <!-- <a href="javascript: void(0)" :title="chapter.chapterName" class="current-1">
                               <em class="lh-menu-i-1 icon18 mr10"></em>{{chapter.chapterName}}
                             </a> -->
-
-                            <ol class="lh-menu-ol" style="display: block;">
+                            <ol style="display: block;" class="lh-menu-ol">
                               <li class="lh-menu-second ml30">
                                 <a :href="'/player/'+chapter.chapterId" target="_blank">
                                   <span class="fr">
+                                    <i class="free-icon vam mr10 blue-btn" v-if="existChapterId(chapter.chapterId)">已学习</i>
+                                  </span>
+                                  <span class="fr">
                                     <i class="free-icon vam mr10">免费观看</i>
                                   </span>
-                                  <em class="lh-menu-i-2 icon16 mr5">&nbsp;</em>{{chapter.chapterName}}
+                                  <em class="lh-menu-i-2 icon16 mr5" >&nbsp;</em>{{chapter.chapterName}}
                                 </a>
                               </li>
-
                             </ol>
 
                           </li>
@@ -112,7 +113,7 @@
 
 <script>
 import courseApi from '@/api/course'
-import orderApi from '@/api/orders' 
+import orderApi from '@/api/orders'
 export default {
    asyncData({ params, error }) {
     return {courseId:params.id}
@@ -124,7 +125,9 @@ export default {
        chapterVideoList: [],
        isBuy: false,
        course:'',
-       teacher:''
+       teacher:'',
+       studyList:{},
+       readlist:[]
      }
    },
 
@@ -145,13 +148,26 @@ export default {
               this.$router.push({path:'/orders/'+response.data.data.orderNo})
           })
       },
+      existChapterId(chapterId){
+        for (var i = 0; i < this.readlist.length; i++) {
+          if(this.readlist[i].chapterId==chapterId){
+            return true
+          }
+        }
+        return false
+      },
+      //保存学生学习记录
 
+      saveStudyList(){
+       sessionStorage.setItem("studyList",JSON.stringify(this.studyList))
+      },
       initCourseInfo(){
         // 查询章节
          courseApi.getAllchapter({page:1,size:99,courseId:this.courseId})
-            .then(response =>{ 
-              this.chapterVideoList = response.data.data.list 
+            .then(response =>{
+              this.chapterVideoList = response.data.data.list
               sessionStorage.setItem('VideoList',JSON.stringify(response.data.data.list))
+              this.saveStudyList()
             })
         // 查询课程详情
          courseApi.getcourse(this.courseId)
@@ -165,9 +181,19 @@ export default {
                   console.log(this.teacher)
                 })
             })
+         //查询学生学习列表
+            courseApi.getStudyList().then(res=>{
+              this.readlist = res.data.data
+
+            })
 
 
       }
   }
 };
 </script>
+<style scoped="scoped">
+.read{
+  background-color: #f00;
+}
+</style>
