@@ -34,7 +34,7 @@
     },
     methods:{
       initTask(){
-          courseApi.getTasks({chapterId:this.chapter.chapterId}).then(response => {
+          courseApi.getTasks({chapterId:this.chapter}).then(response => {
             this.task = response.data.data.tbTask
           })
       },

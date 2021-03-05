@@ -10,8 +10,6 @@
         <ul v-if="chapterList">
             <li v-for="chapter in chapterList" v-bind:key="chapter.chapterId"><a :href="'/task/'+chapter.chapterId" >{{chapter.chapterName}}</a></li>
         </ul>
-
-      <button type="default" class="Right" @click="showChapter(course)">查看章节</button>
     </el-card>
   <!--  <el-card class="chapter-list "  v-if="showDialog">
          <h1>选择作业所属章节 <el-button class="Right" type="danger " @click="closeChapter()" round>关闭</el-button></h1>
@@ -33,31 +31,18 @@
     data() {
       return {
         showDialog:false,
-        data: [{
-          label: '一级 1',
-          children: [{
-            label: '二级 1-1'
-          }]
-        }],
         courseList: [],
         queryParams: {
           page: 1,
           size: 99
         },
         chapterList: [],
-        defaultProps: {
-          children: 'children',
-          label: 'courseName'
-        },
         teacherId:''
       };
     },
     mounted() {
       this.showDialog=false
-      courseApi.getallcourse(this.queryParams).then(response => {
-        this.courseList = response.data.data.list
-
-      })
+      this.initCourseFirst();
     },
     methods: {
       routerJump(row){
@@ -66,19 +51,22 @@
           name: 'task-id',params:{id:row}
         })
       },
-      showChapter(course){
-        this.teacherId = course.courseAuthorId || ''
-          this.showDialog=true
-          this.chapterList=""
-          courseApi.getAllchapter({page:1,size:99,courseId:course.courseId})
-             .then(response =>{
-               this.chapterList = response.data.data.list
-
-             })
+      showChapter(courseId){
+        this.showDialog=true
+        courseApi.getAllchapter({page:1,size:99,courseId:courseId})
+           .then(response =>{
+             this.chapterList = response.data.data.list
+           })
       },
       closeChapter(){
         this.showDialog=false
-      }
+      },
+      initCourseFirst() {
+        courseApi.getallcourse(this.queryParams).then(response => {
+          console.log(response.data.data.list)
+          this.courseList = response.data.data.list
+        })
+      },
     }
   };
 </script>
@@ -109,7 +97,6 @@
     position: absolute;
     z-index: 10;
     width: 90%;
-    height: 400px;
     background-color: #409EFF;
     left:0; right:0; top:0; bottom:0;
     margin:auto;
