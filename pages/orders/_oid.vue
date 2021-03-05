@@ -1,3 +1,11 @@
+<!--
+ * @Author: inwen6
+ * @Date: 2020-05-21 01:51:40
+ * @LastEditTime: 2021-03-04 15:27:52
+ * @LastEditors: your name
+ * @Description: 
+ * @FilePath: /accccc/pages/orders/_oid.vue
+-->
 <template>
   <div class="Page Confirm">
     <div class="Title">

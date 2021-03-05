@@ -70,6 +70,8 @@
       }
     },
     created() {
+    },
+    mounted(){
       this.initActivity();
     },
     methods: {

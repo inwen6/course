@@ -187,7 +187,9 @@ export default {
   created() {
     //调用查询banner的方法
     // this.getBannerList()
-    //调用查询热门课程和名师的方法
+    //调用查询热门课程和名师的方法 
+  },
+  mounted(){
     this.getHotCourseTeacher()
   },
   methods:{

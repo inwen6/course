@@ -102,6 +102,10 @@
     margin:auto;
     color: #FFFFFF;
     padding: 20px;
+    overflow-y: auto;
+  }
+  .el-card__body{
+    height: 100%;
   }
 
 

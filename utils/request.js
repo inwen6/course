@@ -1,14 +1,14 @@
 /*
  * @Author: inwen6
  * @Date: 2021-02-28 00:38:37
- * @LastEditTime: 2021-03-05 01:33:12
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-03-05 09:56:42
+ * @LastEditors: your name
  * @Description: 描述
- * @FilePath: /course/utils/request.js
+ * @FilePath: /accccc/utils/request.js
  */
 import axios from 'axios'
 import cookie from 'js-cookie'
-import { ColorPicker } from 'element-ui'
+import { Message } from 'element-ui'
 // 创建axios实例 
 const service = axios.create({
   baseURL: 'http://47.113.82.4:8001', // api的base_url

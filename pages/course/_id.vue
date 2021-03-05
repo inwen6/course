@@ -133,13 +133,15 @@ export default {
 
   //在页面渲染之前执行
   created(){
+  },
+  mounted(){
       this.initCourseInfo()
   },
-
   methods:{
-      //生成订单
+      //生成
       createOrders(){
-        orderApi.createOrders(this.courseId)
+        console.log(this)
+        orderApi.createOrders(this.courseId || this.$route.params.id)
           .then(response => {
               //获取返回的订单号
               //生成订单之后，跳转到订单显示页面
