@@ -33,13 +33,13 @@
 
     },
     methods:{
-      initTask(){
-          courseApi.getTasks({chapterId:this.chapter.chapterId}).then(response => {
+      initTask(){ 
+          courseApi.getTasks({chapterId:(this.chapter.chapterId || this.$route.params.id)}).then(response => {
             this.task = response.data.data.tbTask
           })
       },
       submit(){
-        let obj = Object.assign(this.task,{chapterId:this.chapter.chapterId})
+        let obj = Object.assign(this.task,{chapterId:(this.chapter.chapterId || this.$route.params.id)})
           courseApi.addTasks(obj).then(response => {
             // this.task = response.data.data.tbTask
             alert(response.data.message)
